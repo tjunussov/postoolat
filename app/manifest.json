@@ -1,0 +1,42 @@
+{
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0qii432aFllNjHhE1yXOlCBOMFl+bBVhj0EsD1anjaeRCkRLjOQkRRPTTlU5LXBU5td8Qq+XflcgsY9ZnF3FOIIoBCa/d4bYed/HN1/GvCuQ5QYmcX/uCqfuwfndDykztN0ZhbC47XV6e5rGE07UH78e+ysMV094GsT4SMxT2vsg+rRz786bZRVUkUuRsIYeRIOClJlhZDBxPIS8qND9xHU9yuMboVwJ6eBfP+4OcEkK+1KqX8lpnRDamVS9L+iPfOYQ9TTJd5ikFRkwafU4M/VMgKl5e3lNQHbnwpQg53pGPtkKLn9SeY26YsYU2qfFSwxqaBSa8Ven3PdgCXX71wIDAQAB",
+  "name": "POSTOOLAT® by SMARTPOS",
+  "version": "2.0",
+  "manifest_version": 2,
+  "homepage_url" : "http://postoolat.smartpos.net",
+  "description": "Javascript Access to POS Devices",
+  // "browser_action": {  },
+  "background": {
+    "scripts": ["escpos/escpos.js","background.js"],
+    "persistent": false
+  },
+  "icons": {
+    "128": "smartpos-icon-128.png"
+  },
+  "permissions": [
+    "nativeMessaging",
+    "storage"
+  ],
+  "externally_connectable": {
+    "matches": ["*://*.imbir.kz/*","*://*.toolpar.com/*", "*://*.devd.io/*","*://*.smartpos.io/*","*://*.smartpos.kz/*","https://developer.chrome.com/*"]
+  },
+  "content_scripts": [
+      {
+        "matches": ["*://*/*"],
+        "js": ["content.js"]
+        // "run_at": "document_start"
+      }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "options_ui": {
+    // Required.
+    "page": "options.html",
+    // Recommended.
+    "chrome_style": false,
+    "open_in_tab": true
+  },
+  "web_accessible_resources": [
+    "page-postoolat.js",
+    "demo.js"
+  ]
+}

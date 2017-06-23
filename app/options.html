@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Options - Payment Terminal </title>
+  <style>
+    html, body  { padding: 0px;  background-color: buttonface;  }
+    body { margin:20px auto; width: 420px; height: 600px; }
+    fieldset  { padding: 10px 20px; }
+    html, body, fieldset { font-size: 11px; }
+    body, legend, label, button { font-family: 'Segoe UI'; }
+    label { display: inline-block; min-width: 100px; height: 20px;  }
+    fieldset { border:2px groove #fff; }
+    input, textarea { border:1px inset #ccc; margin-bottom: 5px; }
+    button { margin-bottom: 5px; border:1px outset #fff; }
+  </style>
+</head>
+<body>
+
+<fieldset>
+  <legend>Terminal</legend>
+
+  <label>COM port:</label>
+  <input type="number" id="comport" min="1" max="100"></input> <label>Mock device:</label> <input type="checkbox" id="mock">
+  <button id="test">Test</button>
+</fieldset>
+
+
+<fieldset>
+  <legend>Printer</legend>
+  <label>Download</label><a href="install/io-smartpos-postoolat-host.zip">Install (Click Save As)</a> See <a id="manual_button" href="#" >Manual</a> or <a href="demo.html">Demo</a><br>
+  <label>Printer name:</label><input type="text" id="printer_name"><br>
+  <label>Paper Width(Chars):</label><input type="text" id="print_width"><br>
+  <label>Encoding:</label>
+  	<select id="print_encoding">
+  		<option value="windows1251" selected>RONGTA (windows1251)</option>
+  		<option value="windows1251,epson">EPSON (windows1251)</option>
+  	</select>
+  <br>
+  <textarea id="print_html" placeholder="Printer data (HTML)" rows="10" cols="50"></textarea><br>
+  <button id="print_test_html">Print HTML</button><br>
+  <textarea id="print_data" placeholder="Printer data (Base64)" rows="5" cols="50"></textarea><br>
+  <button id="print_test">Print BASE64</button> Ex. FooBar Inc
+</fieldset>
+
+<fieldset>
+  <legend>Status</legend>
+  <div id="status"></div>
+</fieldset>
+<br>
+<button id="save">Save All Settings</button>
+
+
+<dialog id="manual" onclick="this.close();">
+<pre>
+  1) Download and install Host.zip application, after extract run install.bat as Administrator
+  2) Whitelist Chrome Extension by running postoolat.reg
+  3) Connect printer and install Generic Text printer to USB000
+  4) Add to your printing page meta tag with name "POSTOOLAT"
+  5) From JS issue postoolat.print(html) or more safe window["postoolat_print"] = html;
+  6) You can also issue native message to print see demo
+</pre>
+</dialog>
+
+<script src="options.js"></script>
+</body>
+</html>

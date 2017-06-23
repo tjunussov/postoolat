@@ -1,0 +1,1 @@
+devd.exe -s -a -p 70 . -l
